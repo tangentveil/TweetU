@@ -1,0 +1,26 @@
+.nav-div{
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* width: 100%; */
+}
+
+.underline{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-bottom: 2px solid #e3e2e2;
+    width:100%;
+    /* margin-top: 20px; */
+}
+
+.profileNav{
+    gap: 6rem;
+    margin-right: 0;
+}
+
+.active{
+    border-top: 2px solid #e3e2e2;
+    width:100%;
+}

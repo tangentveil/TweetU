@@ -1,0 +1,45 @@
+.ContentUploadContainer {
+    width: 100%;
+    background-color: white;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 3px;
+}
+
+.content-post {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.input-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-div input{
+    padding: 16px;
+    background-color: rgb(232, 230, 230);
+    border: none;
+    border-radius: 3px;
+    width: 40%;
+    outline: none;
+}
+
+.btn {
+    padding: 15px;
+    background-color: rgb(254, 162, 177);
+    border: none;
+    border-radius: 3px;
+    width: 10%;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(254, 138, 157);
+}
