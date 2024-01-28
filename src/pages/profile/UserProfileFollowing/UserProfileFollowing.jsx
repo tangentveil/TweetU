@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Profile from "../Profile";
 import { Context } from "../../../Context/MyContext";
 
@@ -23,7 +23,7 @@ const UserProfileFollowing = () => {
                   <p>Following: 200</p>
                 </div>
               </div>
-              <p>Following</p>
+              <p style={{color: "rgb(134, 133, 133)"}}>Following</p>
             </div>
             <div className="underline"></div>
           </div>
