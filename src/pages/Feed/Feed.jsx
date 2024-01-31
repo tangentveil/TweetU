@@ -3,7 +3,6 @@ import "./Feed.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Posts from "../Posts/Posts";
 import { Context } from "../../Context/MyContext";
-import { Spinner } from "react-bootstrap";
 
 const Feed = () => {
   const { setText, handlePost, postLists, showLoader } = useContext(Context);
@@ -31,7 +30,7 @@ const Feed = () => {
             />
             <button className="btn" onClick={handlePost}>
               Post
-              {showLoader && <Spinner className="custom_spinner"></Spinner> }
+              {showLoader && <div className="custom_spinner"></div> }
             </button>
           </div>
         </div>

@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../../Context/MyContext";
 import { auth, db } from "../../../firebase";
 import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
-import { Spinner } from "react-bootstrap";
 
 const UserProfileFollower = ({ users }) => {
   const { img, followingUsers } = useContext(Context);
@@ -80,7 +79,7 @@ const UserProfileFollower = ({ users }) => {
 
         <button className="follow-btn" onClick={handleFollow}>
           {isFollowing ? "Unfollow" : "Follow"}
-          {showLoader && <Spinner className="custom_spinner"></Spinner> }
+          {showLoader && <div className="custom_spinner"></div> }
         </button>
       </div>
       <div className="underline"></div>

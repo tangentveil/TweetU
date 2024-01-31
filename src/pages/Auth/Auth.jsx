@@ -10,9 +10,6 @@ import image from "../../assets/auth.png";
 import { useNavigate } from "react-router-dom";
 import { collection, setDoc, getDoc, doc } from "firebase/firestore";
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import { Spinner } from "react-bootstrap";
-
 const Auth = () => {
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(false);
@@ -153,7 +150,7 @@ const Auth = () => {
 
             <button type="submit" className={styles.auth_btn}>
               {isSignup ? "Sign up" : "Log in"}
-              {loading && <Spinner className="custom_spinner"></Spinner>}
+              {loading && <div className="custom_spinner"></div>}
             </button>
           </form>
         </div>

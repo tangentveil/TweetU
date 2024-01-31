@@ -4,7 +4,6 @@ import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import img from "../../assets/auth.png";
 import { Context } from "../../Context/MyContext";
-import { Spinner } from "react-bootstrap";
 
 const User = ({ users }) => {
   // console.log(users)
@@ -82,7 +81,7 @@ const User = ({ users }) => {
 
           <button className="follow-btn" onClick={handleFollow}>
             {isFollowing ? "Unfollow" : "Follow"}
-            {showLoader && <Spinner className="custom_spinner"></Spinner> }
+            {showLoader && <div className="custom_spinner"></div> }
           </button>
         </div>
         <div className="underline"></div>
