@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import img from "../assets/auth.png";
+import { Spinner } from "react-bootstrap";
 
 export const Context = createContext();
 
@@ -26,6 +27,7 @@ const MyContext = ({ children }) => {
   const [usersPosts, setUsersPosts] = useState([]);
   const [followingUsers, setFollowingUsers] = useState([]);
   const [userListFollowing, setUserListFollowing] = useState([]);
+  const [showLoader, setShowLoader] = useState(false);
 
   const usersCollectionRef = collection(db, "users");
   const postsCollectionRef = collection(db, "posts");
@@ -156,15 +158,22 @@ const MyContext = ({ children }) => {
   ]);
 
   const handlePost = async () => {
-    await addDoc(postsCollectionRef, {
-      displayName: User.displayName,
-      id: User.uid,
-      text,
-      created: Date.now(),
-    });
-
-    alert("Post Created");
-    setText("");
+    setShowLoader(true)
+    try{
+      await addDoc(postsCollectionRef, {
+        displayName: User.displayName,
+        id: User.uid,
+        text,
+        created: Date.now(),
+      });
+  
+      setShowLoader(false);
+      // alert("Post Created");
+      setText("");
+    } catch(error){
+      console.log("Error in Creating Post", error);
+      setShowLoader(false);
+    }
   };
 
   return (
@@ -189,6 +198,9 @@ const MyContext = ({ children }) => {
         setIsFollowing,
         followersLists,
         followingUsers,
+        Spinner,
+        showLoader,
+        setShowLoader
       }}
     >
       {children}

@@ -10,8 +10,9 @@ const User = ({ users }) => {
   const User = auth.currentUser;
   // console.log(curUser)
 
-  const { followingUsers } = useContext(Context);
+  const { followingUsers, Spinner } = useContext(Context);
   const [isFollowing, setIsFollowing] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
 
   const userFollowRef = collection(db, "users", User.uid, "follows");
   const UserDocRef = doc(userFollowRef, users?.id);
@@ -36,11 +37,14 @@ const User = ({ users }) => {
     try {
       if (User) {
         if (isFollowing) {
+          setShowLoader(true);
           await deleteDoc(UserDocRef);
           await deleteDoc(followerRef);
           setIsFollowing(!isFollowing);
-          alert("User Unfollowed");
+          // alert("User Unfollowed");
+          setShowLoader(false);
         } else {
+          setShowLoader(true);
           await setDoc(UserDocRef, {
             userId: users.id,
           });
@@ -50,10 +54,12 @@ const User = ({ users }) => {
           });
 
           setIsFollowing(!isFollowing);
-          alert("User Followed");
+          // alert("User Followed");
+          setShowLoader(false);
         }
       }
     } catch (error) {
+      setShowLoader(false)
       console.log(error);
     }
   };
@@ -75,6 +81,7 @@ const User = ({ users }) => {
 
           <button className="follow-btn" onClick={handleFollow}>
             {isFollowing ? "Unfollow" : "Follow"}
+            {showLoader && <Spinner className="custom_spinner"></Spinner> }
           </button>
         </div>
         <div className="underline"></div>

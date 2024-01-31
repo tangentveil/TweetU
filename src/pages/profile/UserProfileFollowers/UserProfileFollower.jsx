@@ -4,11 +4,12 @@ import { auth, db } from "../../../firebase";
 import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 
 const UserProfileFollower = ({ users }) => {
-  const { img, followingUsers } = useContext(Context);
+  const { img, followingUsers, Spinner } = useContext(Context);
 
   const User = auth.currentUser;
 
   const [isFollowing, setIsFollowing] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
 
   const userFollowRef = collection(db, "users", User?.uid, "follows");
   const UserDocRef = doc(userFollowRef, users?.id);
@@ -33,11 +34,14 @@ const UserProfileFollower = ({ users }) => {
     try {
       if (User) {
         if (isFollowing) {
+          setShowLoader(true);
           await deleteDoc(UserDocRef);
           await deleteDoc(followerRef);
           setIsFollowing(!isFollowing);
           // alert("User Unfollowed");
+          setShowLoader(false);
         } else {
+          setShowLoader(true);
           await setDoc(UserDocRef, {
             userId: users.id,
           });
@@ -48,14 +52,16 @@ const UserProfileFollower = ({ users }) => {
 
           setIsFollowing(!isFollowing);
           // alert("User Followed")
+          setShowLoader(false);
         }
       }
     } catch (error) {
+      setShowLoader(false);
       console.log(error);
     }
   };
 
-  console.log(isFollowing);
+  // console.log(isFollowing);
 
   return (
     <div className="container">
@@ -73,6 +79,7 @@ const UserProfileFollower = ({ users }) => {
 
         <button className="follow-btn" onClick={handleFollow}>
           {isFollowing ? "Unfollow" : "Follow"}
+          {showLoader && <Spinner className="custom_spinner"></Spinner> }
         </button>
       </div>
       <div className="underline"></div>

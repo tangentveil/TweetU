@@ -38,6 +38,9 @@
     color: white;
     font-weight: 800;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn:hover {

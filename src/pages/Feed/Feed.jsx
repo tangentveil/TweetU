@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Feed.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Posts from "../Posts/Posts";
 import { Context } from "../../Context/MyContext";
 
 const Feed = () => {
-  const { setText, handlePost, postLists } = useContext(Context);
+  const { setText, handlePost, postLists, Spinner, showLoader } = useContext(Context);
 
   const [loading, setLoading] = useState(false);
 
@@ -30,6 +30,7 @@ const Feed = () => {
             />
             <button className="btn" onClick={handlePost}>
               Post
+              {showLoader && <Spinner className="custom_spinner"></Spinner> }
             </button>
           </div>
         </div>

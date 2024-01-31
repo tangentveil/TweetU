@@ -1,5 +1,5 @@
-import "./Auth.css";
-import React, { useState } from "react";
+import styles from "./Auth.module.css";
+import { useState } from "react";
 import { auth, db } from "../../firebase";
 import {
   createUserWithEmailAndPassword,
@@ -10,12 +10,16 @@ import image from "../../assets/auth.png";
 import { useNavigate } from "react-router-dom";
 import { collection, setDoc, getDoc, doc } from "firebase/firestore";
 
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import { Spinner } from "react-bootstrap";
+
 const Auth = () => {
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // const {getFollowedUsersPost} = useContext(Context);
 
@@ -26,20 +30,22 @@ const Auth = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // setLoading(true)
+    setLoading(true);
 
     if (!email && !password) {
       alert("Enter email and password");
-      // setLoading(false)
+      setLoading(false);
     }
 
     if (isSignup) {
       if (!name) {
         alert("Enter a name to continue");
+        setLoading(false);
         return;
       }
 
       try {
+        setLoading(true);
         const userCredential = await createUserWithEmailAndPassword(
           auth,
           email,
@@ -57,14 +63,18 @@ const Auth = () => {
             displayName: name,
             email: email,
           });
+
           console.log("Users added");
         }
 
+        setLoading(false);
         navigate("/feed");
       } catch (error) {
+        setLoading(false);
         console.error("Error creating user:", error);
       }
     } else {
+      setLoading(true);
       try {
         const userCredential = await signInWithEmailAndPassword(
           auth,
@@ -72,8 +82,10 @@ const Auth = () => {
           password
         );
 
+        setLoading(false);
         navigate("/feed");
       } catch (error) {
+        setLoading(false);
         console.error("Error signing in:", error);
       }
     }
@@ -85,11 +97,11 @@ const Auth = () => {
         <h2>TweetX</h2>
       </header>
 
-      <div className="signUp_login_btn">
+      <div className={styles.signUp_login_btn}>
         <p>
           <button
             type="button"
-            className="handle-switch-btn"
+            className={styles.handle_switch_btn}
             onClick={handleSwitch}
           >
             {isSignup ? "Login" : "Create Account"}
@@ -97,8 +109,8 @@ const Auth = () => {
         </p>
       </div>
 
-      <div className="auth-container">
-        <div className="create_acc">
+      <div className={styles.auth_container}>
+        <div className={styles.create_acc}>
           {isSignup ? <h1>Create Account</h1> : <h1>Log In</h1>}
 
           <form onSubmit={handleSubmit}>
@@ -139,9 +151,9 @@ const Auth = () => {
               />
             </label>
 
-            <button type="submit" className="auth-btn">
+            <button type="submit" className={styles.auth_btn}>
               {isSignup ? "Sign up" : "Log in"}
-              {/* {loading && <CgSpinner size={20} className="mt-1 animate-spin" />} */}
+              {loading && <Spinner className="custom_spinner"></Spinner>}
             </button>
           </form>
         </div>
