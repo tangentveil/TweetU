@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../../Context/MyContext";
 import { auth, db } from "../../../firebase";
 import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
+import { Spinner } from "react-bootstrap";
 
 const UserProfileFollower = ({ users }) => {
-  const { img, followingUsers, Spinner } = useContext(Context);
+  const { img, followingUsers } = useContext(Context);
 
   const User = auth.currentUser;
 

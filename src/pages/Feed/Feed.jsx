@@ -3,9 +3,10 @@ import "./Feed.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Posts from "../Posts/Posts";
 import { Context } from "../../Context/MyContext";
+import { Spinner } from "react-bootstrap";
 
 const Feed = () => {
-  const { setText, handlePost, postLists, Spinner, showLoader } = useContext(Context);
+  const { setText, handlePost, postLists, showLoader } = useContext(Context);
 
   const [loading, setLoading] = useState(false);
 

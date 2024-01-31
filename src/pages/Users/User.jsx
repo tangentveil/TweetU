@@ -4,13 +4,14 @@ import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import img from "../../assets/auth.png";
 import { Context } from "../../Context/MyContext";
+import { Spinner } from "react-bootstrap";
 
 const User = ({ users }) => {
   // console.log(users)
   const User = auth.currentUser;
   // console.log(curUser)
 
-  const { followingUsers, Spinner } = useContext(Context);
+  const { followingUsers } = useContext(Context);
   const [isFollowing, setIsFollowing] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
 

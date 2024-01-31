@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import img from "../assets/auth.png";
-import { Spinner } from "react-bootstrap";
 
 export const Context = createContext();
 
@@ -198,7 +197,6 @@ const MyContext = ({ children }) => {
         setIsFollowing,
         followersLists,
         followingUsers,
-        Spinner,
         showLoader,
         setShowLoader
       }}
