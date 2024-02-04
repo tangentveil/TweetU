@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./UserProfileNav.module.css";
 import { NavLink } from "react-router-dom";
 
@@ -9,6 +8,9 @@ const links = [
 ];
 
 const UserProfileNav = () => {
+  const location = window.location.pathname;
+  // console.log(location);
+
   return (
     <>
       <div className="nav-div">
@@ -20,8 +22,9 @@ const UserProfileNav = () => {
               <NavLink
                 key={link.id}
                 to={link.href}
-                className="nav-links"
-                activeclassname={styles.active}
+                className={
+                  location === link.href ? styles.profile_nav_active : styles.nav_links
+                }
               >
                 <p>{link.text}</p>
               </NavLink>

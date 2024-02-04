@@ -20,7 +20,18 @@
     margin-right: 0;
 }
 
-.active{
+.profile_nav_active{
     border-top: 2px solid #e3e2e2;
     width:100%;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    color: rgb(119, 119, 119);
+}
+
+.nav_links{
+    text-decoration: none;
+    color: rgb(202, 200, 200);
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
 }
