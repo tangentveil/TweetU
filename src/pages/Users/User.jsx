@@ -4,6 +4,7 @@ import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 import img from "../../assets/auth.png";
 import { Context } from "../../Context/MyContext";
+import { ToastContainer, toast } from 'react-toastify';
 
 const User = ({ users }) => {
   // console.log(users)
@@ -42,6 +43,7 @@ const User = ({ users }) => {
           await deleteDoc(followerRef);
           setIsFollowing(!isFollowing);
           // alert("User Unfollowed");
+          toast("User Unfollowed");
           setShowLoader(false);
         } else {
           setShowLoader(true);
@@ -55,17 +57,20 @@ const User = ({ users }) => {
 
           setIsFollowing(!isFollowing);
           // alert("User Followed");
+          toast("User Followed");
           setShowLoader(false);
         }
       }
     } catch (error) {
       setShowLoader(false)
       console.log(error);
+      toast("Error");
     }
   };
 
   return (
     <>
+    <ToastContainer position="top-center"/>
       <div className="container">
         <div className="subContainer">
           <div className="image-user-foll">

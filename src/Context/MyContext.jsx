@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import img from "../assets/auth.png";
+import { ToastContainer, toast } from "react-toastify";
 
 export const Context = createContext();
 
@@ -157,21 +158,23 @@ const MyContext = ({ children }) => {
   ]);
 
   const handlePost = async () => {
-    setShowLoader(true)
-    try{
+    setShowLoader(true);
+    try {
       await addDoc(postsCollectionRef, {
         displayName: User.displayName,
         id: User.uid,
         text,
         created: Date.now(),
       });
-  
+
       setShowLoader(false);
       // alert("Post Created");
+      toast("Post Created");
       setText("");
-    } catch(error){
+    } catch (error) {
       console.log("Error in Creating Post", error);
       setShowLoader(false);
+      toast("Error");
     }
   };
 
@@ -198,7 +201,9 @@ const MyContext = ({ children }) => {
         followersLists,
         followingUsers,
         showLoader,
-        setShowLoader
+        setShowLoader,
+        ToastContainer,
+        toast,
       }}
     >
       {children}

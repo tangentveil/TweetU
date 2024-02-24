@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../../Context/MyContext";
 import { auth, db } from "../../../firebase";
 import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
+import { ToastContainer, toast } from "react-toastify";
 
 const UserProfileFollower = ({ users }) => {
   const { img, followingUsers } = useContext(Context);
@@ -39,6 +40,7 @@ const UserProfileFollower = ({ users }) => {
           await deleteDoc(followerRef);
           setIsFollowing(!isFollowing);
           // alert("User Unfollowed");
+          toast("User Unfollowed");
           setShowLoader(false);
         } else {
           setShowLoader(true);
@@ -52,38 +54,44 @@ const UserProfileFollower = ({ users }) => {
 
           setIsFollowing(!isFollowing);
           // alert("User Followed")
+          toast("User Followed");
           setShowLoader(false);
         }
       }
     } catch (error) {
       setShowLoader(false);
       console.log(error);
+      toast("Error");
     }
   };
 
   // console.log(isFollowing);
 
   return (
-    <div className="container">
-      <div key={users.id} className="subContainer">
-        <div className="image-user-foll">
-          <div className="image">
-            <img src={img} alt="" />
+    <>
+      <ToastContainer position="top-center" />
+
+      <div className="container">
+        <div key={users.id} className="subContainer">
+          <div className="image-user-foll">
+            <div className="image">
+              <img src={img} alt="" />
+            </div>
+
+            <div className="user-following">
+              <p>{users?.displayName}</p>
+              <p>Following: 200</p>
+            </div>
           </div>
 
-          <div className="user-following">
-            <p>{users?.displayName}</p>
-            <p>Following: 200</p>
-          </div>
+          <button className="follow-btn" onClick={handleFollow}>
+            {isFollowing ? "Unfollow" : "Follow"}
+            {showLoader && <div className="custom_spinner"></div>}
+          </button>
         </div>
-
-        <button className="follow-btn" onClick={handleFollow}>
-          {isFollowing ? "Unfollow" : "Follow"}
-          {showLoader && <div className="custom_spinner"></div> }
-        </button>
+        <div className="underline"></div>
       </div>
-      <div className="underline"></div>
-    </div>
+    </>
   );
 };
 
