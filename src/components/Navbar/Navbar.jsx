@@ -41,7 +41,7 @@ const Navbar = () => {
   return (
     <div>
       <header>
-        <h2>TweetX</h2>
+        <h2>TweetU</h2>
 
         <nav>
           {links.map((link) => {

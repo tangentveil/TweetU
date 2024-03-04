@@ -43,7 +43,7 @@ nav p{
 
 .btn-div button {
     padding: 5px;
-    background-color: rgb(254, 162, 177);
+    background-color: rgba(63, 210, 182, 255);
     border: none;
     border-radius: 3px;
     color: white;
@@ -52,9 +52,9 @@ nav p{
 }
 
 .btn-div button:hover {
-    background-color: rgb(254, 138, 157);
+    background-color: rgba(4, 138, 110, 255);
 }
 
 .active{
-    color: rgb(254, 138, 157);
+    color: rgba(63, 210, 182, 255);
 }

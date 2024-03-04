@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import image from "../../assets/auth.png";
+import image from "../../assets/tweet.svg";
 import { useNavigate } from "react-router-dom";
 import { collection, setDoc, getDoc, doc } from "firebase/firestore";
 
@@ -91,7 +91,7 @@ const Auth = () => {
   return (
     <div>
       <header>
-        <h2>TweetX</h2>
+        <h2>TweetU</h2>
       </header>
 
       <div className={styles.signUp_login_btn}>

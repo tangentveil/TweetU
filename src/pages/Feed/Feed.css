@@ -31,7 +31,7 @@
 
 .btn {
     padding: 15px;
-    background-color: rgb(254, 162, 177);
+    background-color: rgba(63, 210, 182, 255);
     border: none;
     border-radius: 3px;
     width: 10%;
@@ -44,5 +44,5 @@
 }
 
 .btn:hover {
-    background-color: rgb(254, 138, 157);
+    background-color: rgba(4, 138, 110, 255);
 }

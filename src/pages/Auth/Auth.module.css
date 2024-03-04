@@ -4,7 +4,7 @@ header {
 }
 
 header h2 {
-  color: rgb(254, 162, 177);
+  color: rgba(63, 210, 182, 255);
 }
 
 .signUp_login_btn {
@@ -67,7 +67,7 @@ form input {
 
 .auth_btn {
   padding: 1rem;
-  background-color: rgb(254, 162, 177);
+  background-color: rgba(63, 210, 182, 255);
   border: none;
   border-radius: 3px;
   width: 30%;
@@ -82,9 +82,9 @@ form input {
 }
 
 .auth_btn:hover {
-    background-color: rgb(255, 138, 157);
+    background-color: rgba(4, 138, 110, 255);
   }
 
 img {
-  height: 590px;
+  height: 444px;
 }
