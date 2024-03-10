@@ -7,7 +7,7 @@ import { Context } from "../../Context/MyContext";
 
 const Profile = () => {
   const user = auth.currentUser;
-  const { postCount, followingCount, followersCount, img } =
+  const { postCount, followingCount, followersCount, img, userListFollowing, followers } =
     useContext(Context);
 
   return (
@@ -23,8 +23,8 @@ const Profile = () => {
           <h1>{user.displayName}</h1>
           <div className="post_follow">
             <p>Posts: {postCount}</p>
-            <p>Followers : {followersCount}</p>
-            <p>Following: {followingCount}</p>
+            <p>Followers : {followers.length}</p>
+            <p>Following: {userListFollowing.length}</p>
           </div>
         </div>
       </div>

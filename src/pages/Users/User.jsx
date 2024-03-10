@@ -11,7 +11,7 @@ const User = ({ users }) => {
   const User = auth.currentUser;
   // console.log(curUser)
 
-  const { followingUsers } = useContext(Context);
+  const { followingUsers, getFollowingUsersID, getFollowingUsers, getFollowedUsers, getFollowedUsersPost } = useContext(Context);
   const [isFollowing, setIsFollowing] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
 
@@ -61,6 +61,11 @@ const User = ({ users }) => {
           setShowLoader(false);
         }
       }
+
+      getFollowingUsersID();
+      getFollowingUsers();
+      getFollowedUsers();
+      getFollowedUsersPost();
     } catch (error) {
       setShowLoader(false)
       console.log(error);

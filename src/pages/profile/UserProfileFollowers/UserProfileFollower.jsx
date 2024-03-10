@@ -5,7 +5,7 @@ import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 
 const UserProfileFollower = ({ users }) => {
-  const { img, followingUsers } = useContext(Context);
+  const { img, followingUsers, getFollowingUsers, getFollowingUsersID, getFollowedUsers, getFollowedUsersPost } = useContext(Context);
 
   const User = auth.currentUser;
 
@@ -58,6 +58,11 @@ const UserProfileFollower = ({ users }) => {
           setShowLoader(false);
         }
       }
+
+      getFollowingUsersID();
+      getFollowingUsers();
+      getFollowedUsers();
+      getFollowedUsersPost();
     } catch (error) {
       setShowLoader(false);
       console.log(error);
