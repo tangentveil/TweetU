@@ -29,13 +29,15 @@ const Post = ({ post }) => {
 
             <div className="text-time">
               <p>
-                {readMore ? `${post.text.substring(0, 50)}...` : post.text}
-                <button
-                  onClick={() => setReadMore(!readMore)}
-                  className="read-more-btn"
-                >
-                  {readMore ? "read More..." : "show Less"}
-                </button>
+                {readMore ? `${post.text.substring(0, 50)}` : post.text}
+                {post.text.length > 30 && (
+                  <button
+                    onClick={() => setReadMore(!readMore)}
+                    className="read-more-btn"
+                  >
+                    {readMore ? "read More..." : "show Less"}
+                  </button>
+                )}
               </p>
 
               <p>{moment(post.created).fromNow()}</p>

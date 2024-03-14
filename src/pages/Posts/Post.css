@@ -74,6 +74,7 @@
   background-color: transparent;
   color: rgba(63, 210, 182, 255);
   cursor: pointer;
+  padding: 0;
 }
 
 .text-time {
