@@ -30,6 +30,7 @@
 .profileContainer h1{
     margin: 0;
     /* float: left; */
+    color: rgb(90, 90, 90);
 }
 
 .post_follow{

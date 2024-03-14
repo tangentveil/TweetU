@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
-import "./Post.css";
+import "./UserProfilePosts.css";
+import Profile from "../Profile";
+import { Context } from "../../../Context/MyContext";
 import moment from "moment";
-import { Context } from "../../Context/MyContext";
 
-const Post = ({ post }) => {
-  // console.log(post);
-  const user = post.displayName;
-  const { img, BsMenuApp, BsMenuAppFill } = useContext(Context);
+const UserProfilePost = ({ post }) => {
+  const { img, BsMenuApp, BsMenuAppFill } =
+    useContext(Context);
+  // console.log(usersPosts)
   const [readMore, setReadMore] = useState(true);
 
   return (
@@ -19,7 +20,7 @@ const Post = ({ post }) => {
 
           <div className="user-text-time">
             <div className="text-icon">
-              <h2 className="user">{user}</h2>
+              <h2 className="user">{post.displayName}</h2>
               {true ? (
                 <BsMenuApp className="menu-icon" />
               ) : (
@@ -49,4 +50,4 @@ const Post = ({ post }) => {
   );
 };
 
-export default Post;
+export default UserProfilePost;

@@ -15,6 +15,13 @@ header h2{
     margin-left: 50px;
 }
 
+header h2 span{
+    color: white;
+    background-color: rgba(4, 138, 110, 255);
+    padding: 2px 5px 2px 5px;
+    border-radius: 3px;
+}
+
 nav{
     display: flex;
     margin-right: 50px;

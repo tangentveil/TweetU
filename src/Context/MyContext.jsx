@@ -3,6 +3,7 @@ import { auth, db } from "../firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import img from "../assets/tweet.svg";
 import { ToastContainer, toast } from "react-toastify";
+import { BsMenuApp, BsMenuAppFill } from "react-icons/bs";
 
 export const Context = createContext();
 
@@ -207,7 +208,9 @@ const MyContext = ({ children }) => {
         getFollowingUsersID,
         getFollowingUsers,
         getFollowedUsers,
-        getFollowedUsersPost
+        getFollowedUsersPost,
+        BsMenuApp,
+        BsMenuAppFill,
       }}
     >
       {children}
