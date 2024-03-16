@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import "./UserProfilePosts.css";
-import Profile from "../Profile";
-import { Context } from "../../../Context/MyContext";
 import moment from "moment";
+import { Context } from "../../../Context/MyContext";
 
-const UserProfilePost = ({ post }) => {
-  const { img, BsMenuApp, BsMenuAppFill } = useContext(Context);
+const UserProfilePost = ({ post, openModal, isModalOpen, closeModal }) => {
   // console.log(usersPosts)
+  const { img, BsMenuApp, BsMenuAppFill } = useContext(Context);
   const [readMore, setReadMore] = useState(true);
 
   return (
@@ -20,10 +19,15 @@ const UserProfilePost = ({ post }) => {
           <div className="user-text-time">
             <div className="text-icon">
               <h2 className="user">{post.displayName}</h2>
-              {true ? (
-                <BsMenuApp className="menu-icon" />
+
+              {isModalOpen ? (
+                <button onClick={closeModal} className="menu-btn">
+                  <BsMenuAppFill className="menu-icon" />
+                </button>
               ) : (
-                <BsMenuAppFill className="menu-icon" />
+                <button onClick={openModal} className="menu-btn">
+                  <BsMenuApp className="menu-icon" />
+                </button>
               )}
             </div>
 

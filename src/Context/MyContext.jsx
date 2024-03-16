@@ -4,6 +4,7 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import img from "../assets/tweet.svg";
 import { ToastContainer, toast } from "react-toastify";
 import { BsMenuApp, BsMenuAppFill } from "react-icons/bs";
+import { CgCloseR } from "react-icons/cg";
 
 export const Context = createContext();
 
@@ -178,6 +179,7 @@ const MyContext = ({ children }) => {
     }
   };
 
+
   return (
     <Context.Provider
       value={{
@@ -211,6 +213,7 @@ const MyContext = ({ children }) => {
         getFollowedUsersPost,
         BsMenuApp,
         BsMenuAppFill,
+        CgCloseR
       }}
     >
       {children}

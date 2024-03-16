@@ -68,7 +68,6 @@
   font-size: 1.5rem;
 }
 
-
 .read-more-btn{
   border: none;
   background-color: transparent;
@@ -127,4 +126,10 @@
 .text_half-line p:first-child {
   font-size: 14px;
   color: rgb(134, 133, 133);
+}
+
+.menu-btn{
+  background: transparent;
+  cursor: pointer;
+  border: none;
 }

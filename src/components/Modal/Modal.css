@@ -1,0 +1,40 @@
+.modal-overlay {
+  position: absolute;
+  background: transparent;
+  display: none; /* Hide by default */
+  z-index: 10;
+}
+
+.show-modal {
+  display: block; /* Display when modal is open */
+}
+
+.modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: white;
+  border-radius: 15px;
+  width: 10vw;
+  position: absolute;
+  padding: 5px;
+  box-shadow: 3px 3px 10px rgb(0 0 0 /5%), -3px -3px 10px rgb(0 0 0 / 5%);
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.2rem;
+  background: transparent;
+  border-color: transparent;
+  color: rgba(63, 210, 182, 255);
+  cursor: pointer;
+}
+
+.modal-container p{
+  color: rgb(104, 104, 104);
+  padding: 5px;
+  margin: 0;
+}
