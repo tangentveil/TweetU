@@ -4,19 +4,11 @@ import moment from "moment";
 import { Context } from "../../../Context/MyContext";
 import Modal from "../../../components/Modal/Modal";
 
-const UserProfilePost = ({ post }) => {
+const UserProfilePost = ({ post, modalActiveId, toggleModal }) => {
   // console.log(usersPosts)
   const { img, BsMenuApp, BsMenuAppFill } = useContext(Context);
   const [readMore, setReadMore] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const isModalActive = post.docId == modalActiveId;
 
   return (
     <div className="PostContainer">
@@ -30,17 +22,15 @@ const UserProfilePost = ({ post }) => {
             <div className="text-icon">
               <h2 className="user">{post.displayName}</h2>
 
-              {isModalOpen ? (
-                <button onClick={closeModal} className="menu-btn">
+              <button onClick={() => toggleModal(post.docId)} className="menu-btn">
+                {isModalActive ? (
                   <BsMenuAppFill className="menu-icon" />
-                </button>
-              ) : (
-                <button onClick={openModal} className="menu-btn">
+                ) : (
                   <BsMenuApp className="menu-icon" />
-                </button>
-              )}
+                )}
+              </button>
 
-              <Modal isModalOpen={isModalOpen} />
+              <Modal isModalActive={isModalActive} />
             </div>
 
             <div className="text-time">

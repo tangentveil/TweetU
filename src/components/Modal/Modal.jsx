@@ -1,10 +1,10 @@
 import "./Modal.css";
 
-const Modal = ({ isModalOpen }) => {
+const Modal = ({ isModalActive }) => {
   return (
     <div
       className={`${
-        isModalOpen ? "modal-overlay show-modal" : "modal-overlay"
+        isModalActive ? "modal-overlay show-modal" : "modal-overlay"
       }`}
     >
       <div className="modal-container">
