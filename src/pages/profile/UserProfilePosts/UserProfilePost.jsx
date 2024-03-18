@@ -2,11 +2,21 @@ import { useContext, useState } from "react";
 import "./UserProfilePosts.css";
 import moment from "moment";
 import { Context } from "../../../Context/MyContext";
+import Modal from "../../../components/Modal/Modal";
 
-const UserProfilePost = ({ post, openModal, isModalOpen, closeModal }) => {
+const UserProfilePost = ({ post }) => {
   // console.log(usersPosts)
   const { img, BsMenuApp, BsMenuAppFill } = useContext(Context);
   const [readMore, setReadMore] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="PostContainer">
@@ -29,6 +39,8 @@ const UserProfilePost = ({ post, openModal, isModalOpen, closeModal }) => {
                   <BsMenuApp className="menu-icon" />
                 </button>
               )}
+
+              <Modal isModalOpen={isModalOpen} />
             </div>
 
             <div className="text-time">
